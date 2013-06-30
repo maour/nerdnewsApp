@@ -1,16 +1,23 @@
-import QtQuick 2.0
+import QtQuick 2.1
+import "JSONListModel"
 
 Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
+    id: window
+    width: 300
+    height: 500
+
+    LayoutMirroring.enabled: true
+    LayoutMirroring.childrenInherit: true
+
+    JSONListModel {
+        id: stories
+        source: "http://nerdnews.ir/stories.json"
     }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
+
+    ListView {
+        id: titleView
+        model: stories.model
+        delegate: TitleDelegate {}
+        anchors.fill: parent        
     }
 }
