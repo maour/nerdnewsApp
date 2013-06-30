@@ -11,13 +11,32 @@ Rectangle {
 
     JSONListModel {
         id: stories
-        source: "http://nerdnews.ir/stories.json"
+        //        source: "http://nerdnews.ir/stories.json"
+        source: "stories.json"
     }
 
     ListView {
         id: titleView
         model: stories.model
-        delegate: TitleDelegate {}
-        anchors.fill: parent        
+        delegate: TitleDelegate { onClicked: window.state = "SHOWCONTENT" }
+        anchors.fill: parent
+    }
+
+    ContentPage {
+        id: contentPage
+        width: parent.width
+        height: parent.height
+        x: -width
+    }
+
+    states: State {
+        name: "SHOWCONTENT"
+        PropertyChanges { target: contentPage; x: 0 }
+    }
+
+    transitions: Transition {
+        from: "*"
+        to: "*"
+        NumberAnimation { properties: "x"; duration: 200; easing.type: Easing.InCubic }
     }
 }

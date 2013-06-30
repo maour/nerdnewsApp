@@ -7,6 +7,13 @@ Rectangle {
     width:  ListView.view.width
     height: ListView.view.height / 6
 
+    signal clicked;
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: root.clicked()
+    }
+
     Rectangle { width: parent.width; height: 1; color: "white"; anchors.top: parent.top }
     Rectangle { width: parent.width; height: 1; color: "gray" ; anchors.bottom: parent.bottom }
 
