@@ -7,11 +7,13 @@ Rectangle {
     width:  ListView.view.width
     height: ListView.view.height / 6
 
-    signal clicked;
+    signal clicked
 
     MouseArea {
         anchors.fill: parent
-        onClicked: root.clicked()
+        onClicked: {
+            root.clicked()
+        }
     }
 
     Rectangle { width: parent.width; height: 1; color: "white"; anchors.top: parent.top }
@@ -82,6 +84,7 @@ Rectangle {
             id: titleImage
             source: "images/icon"  //temporary image
             anchors.fill: parent
+            asynchronous: true
         }
     }
 
