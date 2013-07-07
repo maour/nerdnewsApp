@@ -5,6 +5,7 @@ Rectangle {
     id: window
     width: 300
     height: 500
+    color: "silver"
 
     //enabling RTL for nerdnews.ir stories
     LayoutMirroring.enabled: true
@@ -38,6 +39,8 @@ Rectangle {
             right: parent.right
             bottom: parent.bottom
         }
+
+        Behavior on scale { NumberAnimation {duration: 400; easing.type: Easing.OutCirc} }
     }
 
     ContentPage {
@@ -46,6 +49,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         x: -width
+        scale : 0.99
     }
 
     ToolBar {
@@ -60,7 +64,8 @@ Rectangle {
 
     states: State {
         name: "SHOWCONTENT"
-        PropertyChanges { target: contentPage; x: 0 }
+        PropertyChanges { target: contentPage; x: 0 ; scale : 1}
+        PropertyChanges { target: titleView; scale : 0.95 }
         PropertyChanges { target: toolBar; showBackButton: true }
     }
 

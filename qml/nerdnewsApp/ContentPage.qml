@@ -11,6 +11,9 @@ Rectangle {
     Rectangle { //background
         anchors.fill: parent
         color: "white"
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     Rectangle {
