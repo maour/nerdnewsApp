@@ -21,11 +21,13 @@ Rectangle {
         color: "gray"
         width: parent.width
         height: parent.height / 25
-        anchors.top: parent.top
+        y : - (height /3)
 
+        radius: 5
         Text {
             id: dateText
-            anchors.centerIn: parent
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: parent.height  / 2
             color: "white"
         }
