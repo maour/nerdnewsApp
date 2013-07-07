@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"> <path id="octagon-outline-icon" d="M322.688,95L417,189.312v133.377L322.688,417H189.312L95,322.688V189.312L189.312,95H322.688z M341.328,50H170.672L50,170.672v170.656L170.672,462h170.656L462,341.328V170.672L341.328,50z"/>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="512.000000pt" height="465.000000pt" viewBox="0 0 512.000000 465.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.11, written by Peter Selinger 2001-2013
+</metadata>
+<g transform="translate(0.000000,465.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M500 2530 l0 -1470 320 0 320 0 0 -435 c0 -291 3 -435 10 -435 6 0
+303 196 659 435 l649 435 1081 0 1081 0 0 1470 0 1470 -2060 0 -2060 0 0
+-1470z m3720 0 l0 -1070 -940 0 -940 0 -390 -260 c-214 -143 -392 -260 -395
+-260 -3 0 -5 117 -5 260 l0 260 -325 0 -325 0 0 1070 0 1070 1660 0 1660 0 0
+-1070z"/>
+</g>
 </svg>

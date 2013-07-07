@@ -66,21 +66,6 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
 
         Image {
-            id: star
-            source: "images/star.png"
-            width: parent.width / 3
-            height: width
-            anchors.top: parent.top
-            anchors.right: parent.right
-
-            Text {
-                text: model.total_point
-                anchors.centerIn: parent
-                font.pixelSize: parent.width / 2
-            }
-        }
-
-        Image {
             id: titleImage
             source: "images/icon"  //temporary image
             anchors.fill: parent
@@ -94,7 +79,8 @@ Rectangle {
             verticalCenter: parent.verticalCenter
             left: imageFrame.right
             leftMargin: 5
-            right: commentsCount.left
+            right: pointerPicture.left
+            rightMargin: 5
         }
 
         Text {
@@ -116,14 +102,50 @@ Rectangle {
     }
 
     Image {
+        id: star
+        source: "images/star.svg"
+        width: height
+        height: parent.height / 6
+        anchors.bottom: pointerPicture.top
+        anchors.bottomMargin: height / 2
+        anchors.horizontalCenter: pointerPicture.horizontalCenter
+        sourceSize.height: height
+        sourceSize.width: width
+    }
+
+    Item {
+        width: height
+        height: parent.height / 6
+        anchors.right: star.left
+        anchors.rightMargin: 3
+        anchors.bottom: pointerPicture.top
+        anchors.bottomMargin: height / 2
+        Text {
+            text: model.total_point
+            anchors.centerIn: parent
+            font.bold: true
+        }
+    }
+
+    Image {
         id: commentsCount
         source: "images/comment.svg"
-        opacity: 0.3
         width: height
-        height: parent.height / 4
-        anchors.right: pointerPicture.left
-        anchors.verticalCenter: parent.verticalCenter
+        height: parent.height / 6
+        anchors.top: pointerPicture.bottom
+        anchors.topMargin: height / 2
+        anchors.horizontalCenter: pointerPicture.horizontalCenter
+        sourceSize.height: height
+        sourceSize.width: width
+    }
 
+    Item {
+        width: height
+        height: parent.height / 6
+        anchors.top: pointerPicture.bottom
+        anchors.topMargin: height / 2
+        anchors.right: commentsCount.left
+        anchors.rightMargin: 3
         Text {
             text: model.comments_count
             anchors.centerIn: parent
