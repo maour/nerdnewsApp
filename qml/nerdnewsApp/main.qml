@@ -13,11 +13,11 @@ Rectangle {
     JSONListModel {
         id: stories
         source: "http://nerdnews.ir/stories.json"
+        //        source:"stories.json"
     }
 
     ListView {
         id: titleView
-        anchors.fill: parent
         model: stories.model
         delegate: TitleDelegate {
             onClicked: {
@@ -31,18 +31,37 @@ Rectangle {
                 window.state = "SHOWCONTENT";
             }
         }
+
+        anchors {
+            top: toolBar.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
     }
 
     ContentPage {
         id: contentPage
+        anchors.top: toolBar.bottom
+        anchors.bottom: parent.bottom
         width: parent.width
-        height: parent.height
         x: -width
+    }
+
+    ToolBar {
+        id: toolBar
+        width: parent.width
+        height: parent.height / 9
+        titleText: "Nerd News"
+        onBackButtonClicked: {
+            window.state = ""
+        }
     }
 
     states: State {
         name: "SHOWCONTENT"
         PropertyChanges { target: contentPage; x: 0 }
+        PropertyChanges { target: toolBar; showBackButton: true }
     }
 
     transitions: Transition {
