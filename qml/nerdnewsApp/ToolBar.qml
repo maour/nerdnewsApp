@@ -12,7 +12,6 @@ Rectangle {
     property bool showBackButton: false
     property alias titleText: titleText.text
 
-
     Image {
         id: background
         source: "images/bar.jpg"
@@ -40,6 +39,9 @@ Rectangle {
         width: height
         smooth: true
         visible: showBackButton
+
+        sourceSize.height : height
+        sourceSize.width : width
 
         MouseArea {
             anchors.fill: parent
