@@ -72,6 +72,6 @@ Rectangle {
     transitions: Transition {
         from: "*"
         to: "*"
-        NumberAnimation { properties: "x"; duration: 200; easing.type: Easing.InCubic }
+        NumberAnimation { properties: "x"; duration: 300; easing.type: Easing.OutCirc }
     }
 }
