@@ -24,7 +24,7 @@ Rectangle {
             onClicked: {
                 contentPage.storyTitle = LayoutMirroring.enabled? '\u200F' + model.title : model.title //if UI is RTL then texts also should be RTL
                 contentPage.storyContent = LayoutMirroring.enabled? '\u200F' + model.content : model.content //if UI is RTL then texts also should be RTL
-                contentPage.storyIcon = "images/star.png"
+                contentPage.storyIcon = "images/icon"
                 contentPage.storyDate = model.published_at
                 contentPage.storyAuthor = model.author
                 contentPage.storyScore = model.total_point

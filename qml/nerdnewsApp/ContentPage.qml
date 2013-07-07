@@ -26,12 +26,8 @@ Rectangle {
         Text {
             id: dateText
             anchors.centerIn: parent
-            font.pixelSize: parent.height  / 3
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: window.state = ""
+            font.pixelSize: parent.height  / 2
+            color: "white"
         }
     }
 
