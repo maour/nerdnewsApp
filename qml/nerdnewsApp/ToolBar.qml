@@ -18,6 +18,9 @@ Rectangle {
         anchors.fill: parent
         fillMode: Image.TileHorizontally
         smooth: true
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     Text {
