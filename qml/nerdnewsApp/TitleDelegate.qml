@@ -57,19 +57,22 @@ Rectangle {
         }
     }
 
-    Item {
+    Rectangle {
         id: imageFrame
         width: height
         height: parent.height / 1.5
         anchors.left: parent.left
         anchors.leftMargin: 5
+        radius: 9
+        color: "silver"
         anchors.verticalCenter: parent.verticalCenter
 
         Image {
             id: titleImage
-            source: "images/icon"  //temporary image
+            source: model.tags.get(0).tag.thumbnail_url
             anchors.fill: parent
             asynchronous: true
+            clip: true
         }
     }
 
