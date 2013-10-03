@@ -27,6 +27,7 @@ Rectangle {
         Text {
             id: dateText
             anchors.bottom: parent.bottom
+            anchors.bottomMargin: 2
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: parent.height  / 2
             color: "white"
