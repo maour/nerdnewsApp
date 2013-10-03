@@ -6,11 +6,14 @@ Rectangle {
     property alias storyIcon: imagePlace.source
     property alias storyDate: dateText.text
     property alias storyAuthor: authorText.text
-    property alias storyScore: scoreText.text
+    property alias storyAuthorImage: authorImage.source
+    property alias tagsModel: tagsView.model
+    property alias storyScore: score.text
+    property alias storyCommentsCount: commentsCount.text
 
     Rectangle { //background
         anchors.fill: parent
-        color: "white"
+        color: "silver"
         MouseArea {
             anchors.fill: parent
         }
@@ -34,93 +37,179 @@ Rectangle {
         }
     }
 
+//    Rectangle {
+////        z:-1
+//        anchors {
+//            top: datePlace.bottom
+//            left: parent.left
+//            leftMargin: 10
+//            right: parent.right
+//            rightMargin: 10
+//        }
+//        height: parent.height / 7
+
+//        color: "silver"; anchors.fill: parent
+//    }
     Row {
         id: detailRow
-        height: parent.height / 7
-        anchors {
-            top: datePlace.bottom
-            left: parent.left
-            leftMargin: 10
-            right: parent.right
-            rightMargin: 10
-        }
+                height: parent.height / 7
+                anchors {
+                    top: datePlace.bottom
+                    left: parent.left
+                    leftMargin: 10
+                    right: parent.right
+                    rightMargin: 10
+                }
 
         Image {
             id: imagePlace
             height: parent.height
-            width: parent.width / 2
+            width: parent.width / 3
             asynchronous: true
             fillMode: Image.PreserveAspectFit
         }
 
         Column {
             height: parent.height
+            width: parent.width / 5
+            Row {
+                height: parent.height / 2
+                width: parent.width
+                //                Rectangle {
+                //                    anchors.fill: parent
+                //                    color: "green"
+                //                }
+
+                Image {
+                    //                    id: star
+                    source: "images/star.svg"
+                    width: parent.width / 2
+                    height: parent.height // 6
+                    sourceSize.height: height
+                    sourceSize.width: width
+                }
+
+                Item {
+                    width: parent.width / 2
+                    height: parent.height // 6
+                    Text {
+                        id: score
+                        //                        text: model.total_point
+                        anchors.centerIn: parent
+                        font.bold: true
+                    }
+                }
+            }
+
+            Row {
+                height: parent.height / 2
+                width: parent.width
+                //                Rectangle {
+                //                    anchors.fill: parent
+                //                    color: "pink"
+                //                }
+                Image {
+                    //                    id: commentsCount
+                    source: "images/comment.svg"
+                    width: parent.width / 2
+                    height: parent.height // 6
+                    sourceSize.height: height
+                    sourceSize.width: width
+                }
+
+                Item {
+                    width: parent.width / 2
+                    height: parent.height // 6
+                    Text {
+                        id: commentsCount
+                        //                        text: model.comments_count
+                        anchors.centerIn: parent
+                        font.bold: true
+                    }
+                }
+            }
+        }
+        Column {
+            height: parent.height
             width: parent.width / 2
-            Rectangle {
-                id: authorPlace
-                height: parent.height / 3
+
+            Row {
+                height: ( parent.height / 3 ) * 2
                 width: parent.width
-                color: "#8fd322"
-                Text {
-                    id: authorText
-                    anchors.centerIn: parent
+                Rectangle {
+                    id: authorPlace
+                    height: parent.height
+                    width: ( parent.width / 3) * 2
+                    color: "transparent"
+                    Text {
+                        id: authorText
+                        anchors.centerIn: parent
+                    }
+                }
+                Image {
+                    id: authorImage
+                    height: parent.height
+                    width: parent.width / 3
                 }
             }
 
             Rectangle {
-                id: scorePlace
+                id : tags
                 height: parent.height / 3
                 width: parent.width
-                color: "#eaff00"
-                Text {
-                    id: scoreText
-                    anchors.centerIn: parent
+                color: "transparent"
+                GridView {
+                    id: tagsView
+                    clip: true
+                    flow: GridView.TopToBottom
+                    anchors.fill: parent
+                    delegate: Item { width: tags.width; height: tags.height;
+                        Text {
+                            anchors.centerIn: parent
+                            text: tag.name
+                        }
+                    }
                 }
             }
-
-            Rectangle {
-                id: tagsPlace
-                height: parent.height / 3
-                width: parent.width
-                color: "blue"
-            }
         }
     }
 
-    Rectangle {
-        id: storyTitle
-        color: "pink"
-        width: parent.width
-        height: parent.height / 7
-        anchors.top: detailRow.bottom
+Rectangle {
+    id: storyTitle
+    color: "gray"
+    width: parent.width
+    height: parent.height / 7
+    anchors.top: detailRow.bottom
+    radius: 5
+    Rectangle { width: parent.width; height: 20; color: "gray"; anchors.bottom: parent.bottom }
+    Text {
+        id: titleText
+        anchors.fill: parent
+        wrapMode: Text.WordWrap
+        font.pixelSize: text.length > 50? 14 : 17
+        //            font.bold: true
+        color: "white"
+    }
+}
 
-        Text {
-            id: titleText
-            anchors.fill: parent
-            wrapMode: Text.WordWrap
-            font.pixelSize: text.length > 50? 16 : 20
-            font.bold: true
-        }
+Flickable {
+    flickableDirection: Flickable.VerticalFlick
+    contentWidth: width
+    contentHeight: contentText.paintedHeight
+    clip: true
+    anchors {
+        top: storyTitle.bottom
+        bottom: parent.bottom
+        left: parent.left
+        right: parent.right
     }
 
-    Flickable {
-        flickableDirection: Flickable.VerticalFlick
-        contentWidth: width
-        contentHeight: contentText.paintedHeight
-        clip: true
-        anchors {
-            top: storyTitle.bottom
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-        }
-
-        Text {
-            id: contentText
-            anchors.fill: parent
-            wrapMode: Text.WordWrap
-            font.pixelSize: 15
-            textFormat: Text.RichText
-        }
+    Text {
+        id: contentText
+        anchors.fill: parent
+        wrapMode: Text.WordWrap
+        font.pixelSize: 15
+        textFormat: Text.RichText
     }
+}
 }

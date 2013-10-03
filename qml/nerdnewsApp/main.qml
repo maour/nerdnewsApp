@@ -28,6 +28,9 @@ Rectangle {
                 contentPage.storyDate = model.published_at
                 contentPage.storyAuthor = model.author
                 contentPage.storyScore = model.total_point
+                contentPage.storyAuthorImage = model.author_avatar
+                contentPage.tagsModel = model.tags
+                contentPage.storyCommentsCount = model.comments_count
 
                 window.state = "SHOWCONTENT";
             }
