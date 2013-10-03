@@ -13,7 +13,7 @@ Rectangle {
 
     Rectangle { //background
         anchors.fill: parent
-        color: "silver"
+        color: "#F2F0DF"
         MouseArea {
             anchors.fill: parent
         }
@@ -21,7 +21,7 @@ Rectangle {
 
     Rectangle {
         id: datePlace
-        color: "gray"
+        color: "#607890"//
         width: parent.width
         height: parent.height / 25
         y : - (height /3)
@@ -37,29 +37,16 @@ Rectangle {
         }
     }
 
-//    Rectangle {
-////        z:-1
-//        anchors {
-//            top: datePlace.bottom
-//            left: parent.left
-//            leftMargin: 10
-//            right: parent.right
-//            rightMargin: 10
-//        }
-//        height: parent.height / 7
-
-//        color: "silver"; anchors.fill: parent
-//    }
     Row {
         id: detailRow
-                height: parent.height / 7
-                anchors {
-                    top: datePlace.bottom
-                    left: parent.left
-                    leftMargin: 10
-                    right: parent.right
-                    rightMargin: 10
-                }
+        height: parent.height / 7
+        anchors {
+            top: datePlace.bottom
+            left: parent.left
+            leftMargin: 10
+            right: parent.right
+            rightMargin: 10
+        }
 
         Image {
             id: imagePlace
@@ -104,12 +91,7 @@ Rectangle {
             Row {
                 height: parent.height / 2
                 width: parent.width
-                //                Rectangle {
-                //                    anchors.fill: parent
-                //                    color: "pink"
-                //                }
                 Image {
-                    //                    id: commentsCount
                     source: "images/comment.svg"
                     width: parent.width / 2
                     height: parent.height // 6
@@ -122,13 +104,13 @@ Rectangle {
                     height: parent.height // 6
                     Text {
                         id: commentsCount
-                        //                        text: model.comments_count
                         anchors.centerIn: parent
                         font.bold: true
                     }
                 }
             }
         }
+
         Column {
             height: parent.height
             width: parent.width / 2
@@ -157,7 +139,8 @@ Rectangle {
                 id : tags
                 height: parent.height / 3
                 width: parent.width
-                color: "transparent"
+                color: "#d3d0ba"
+                radius: 15
                 GridView {
                     id: tagsView
                     clip: true
@@ -174,42 +157,44 @@ Rectangle {
         }
     }
 
-Rectangle {
-    id: storyTitle
-    color: "gray"
-    width: parent.width
-    height: parent.height / 7
-    anchors.top: detailRow.bottom
-    radius: 5
-    Rectangle { width: parent.width; height: 20; color: "gray"; anchors.bottom: parent.bottom }
-    Text {
-        id: titleText
-        anchors.fill: parent
-        wrapMode: Text.WordWrap
-        font.pixelSize: text.length > 50? 14 : 17
-        //            font.bold: true
-        color: "white"
-    }
-}
-
-Flickable {
-    flickableDirection: Flickable.VerticalFlick
-    contentWidth: width
-    contentHeight: contentText.paintedHeight
-    clip: true
-    anchors {
-        top: storyTitle.bottom
-        bottom: parent.bottom
-        left: parent.left
-        right: parent.right
+    Rectangle {
+        id: storyTitle
+        color: "#607890"
+        width: parent.width
+        height: parent.height / 10
+        anchors.top: detailRow.bottom
+        radius: 5
+        Rectangle { width: parent.width; height: 20; color: "#607890"; anchors.bottom: parent.bottom }
+        Text {
+            id: titleText
+            anchors.fill: parent
+            wrapMode: Text.WordWrap
+            font.pixelSize: text.length > 50? parent.width / 19 : parent.width / 16
+            font.bold: true
+            color: "#F2F0DF"
+        }
     }
 
-    Text {
-        id: contentText
-        anchors.fill: parent
-        wrapMode: Text.WordWrap
-        font.pixelSize: 15
-        textFormat: Text.RichText
+    Flickable {
+        flickableDirection: Flickable.VerticalFlick
+        contentWidth: width
+        contentHeight: contentText.paintedHeight
+        clip: true
+        anchors {
+            top: storyTitle.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+        Rectangle {anchors.fill: parent; color: "#F2F0DF"}
+
+
+        Text {
+            id: contentText
+            anchors.fill: parent
+            wrapMode: Text.WordWrap
+            font.pixelSize: 15
+            textFormat: Text.RichText
+        }
     }
-}
 }

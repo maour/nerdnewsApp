@@ -3,10 +3,6 @@ import QtQuick 2.0
 Rectangle {
     id: root
 
-    width: 400
-    height: 80
-    color: "black"
-
     signal backButtonClicked
 
     property bool showBackButton: false
@@ -26,7 +22,7 @@ Rectangle {
     Text {
         id: titleText
         anchors.centerIn: parent
-        color: "yellow"
+        color: "silver"
         font.bold: true
         font.pixelSize: parent.height / 3
     }
