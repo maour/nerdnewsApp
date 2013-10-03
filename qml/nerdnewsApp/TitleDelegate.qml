@@ -57,14 +57,12 @@ Rectangle {
         }
     }
 
-    Rectangle {
+    Item {
         id: imageFrame
         width: height
         height: parent.height / 1.5
         anchors.left: parent.left
         anchors.leftMargin: 5
-        radius: 9
-        color: "silver"
         anchors.verticalCenter: parent.verticalCenter
 
         Image {
