@@ -10,10 +10,11 @@ Rectangle {
     property alias tagsModel: tagsView.model
     property alias storyScore: score.text
     property alias storyCommentsCount: commentsCount.text
+    property alias commentsModel: commentsView.model
 
     Rectangle { //background
         anchors.fill: parent
-        color: "#F2F0DF"
+        color: "#888691"
         MouseArea {
             anchors.fill: parent
         }
@@ -159,12 +160,12 @@ Rectangle {
 
     Rectangle {
         id: storyTitle
-        color: "#607890"
+        color: "#2A2700"
         width: parent.width
         height: parent.height / 10
         anchors.top: detailRow.bottom
         radius: 5
-        Rectangle { width: parent.width; height: 20; color: "#607890"; anchors.bottom: parent.bottom }
+        Rectangle { width: parent.width; height: 20; color: "#2A2700"; anchors.bottom: parent.bottom }
         Text {
             id: titleText
             anchors.fill: parent
@@ -182,11 +183,11 @@ Rectangle {
         clip: true
         anchors {
             top: storyTitle.bottom
-            bottom: parent.bottom
+            bottom: comments.top
             left: parent.left
             right: parent.right
         }
-        Rectangle {anchors.fill: parent; color: "#F2F0DF"}
+        Rectangle {anchors.fill: parent; color: "#888691"}
 
 
         Text {
@@ -195,6 +196,36 @@ Rectangle {
             wrapMode: Text.WordWrap
             font.pixelSize: 15
             textFormat: Text.RichText
+        }
+    }
+
+    Rectangle {
+        id: comments
+        visible: storyCommentsCount >0 ? true: false
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: storyCommentsCount >0 ? parent.height / 5 : 0
+        color: "#968888"
+        radius: 20
+        GridView {
+            clip: true
+            id: commentsView
+            flow: GridView.TopToBottom
+            snapMode: GridView.SnapOneRow
+            cellHeight: height
+            cellWidth: width
+            anchors.fill: parent
+            delegate: Item {
+                width: commentsView.cellWidth - 15  ; height: commentsView.cellHeight;
+                Text {
+                    anchors.fill: parent
+                    font.pixelSize: 10
+                    text : comment.content
+                    wrapMode: Text.WordWrap
+                    textFormat: Text.RichText
+                }
+            }
         }
     }
 }

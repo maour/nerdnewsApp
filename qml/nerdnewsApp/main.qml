@@ -31,6 +31,7 @@ Rectangle {
                 contentPage.storyAuthorImage = model.author_avatar
                 contentPage.tagsModel = model.tags
                 contentPage.storyCommentsCount = model.comments_count
+                contentPage.commentsModel = model.comments
 
                 window.state = "SHOWCONTENT";
             }
