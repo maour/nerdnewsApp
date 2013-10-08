@@ -66,6 +66,14 @@ Rectangle {
         }
     }
 
+    SplashScreen {
+        anchors.fill: parent
+        show: true
+        opacity: 0
+        visible: false
+        timeout: 2000
+    }
+
     states: State {
         name: "SHOWCONTENT"
         PropertyChanges { target: contentPage; x: 0 ; scale : 1}
