@@ -19,7 +19,8 @@ Rectangle {
     // State is being deduced from the "show" property. State property
     // shouldn't be used directly
     state: show ? "showingSplashScreen" : ""
-
+    Behavior on visible { NumberAnimation { duration:500; easing.type: Easing.InCurve} }
+    Behavior on opacity { NumberAnimation {duration: 500; easing.type: Easing.InCurve} }
     //Using Fader to capture clicks!
     Fader {
         anchors.fill: parent
